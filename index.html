@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- UPDATE HERE: Change the title of your page -->
+    <title>My Portfolio | Projects</title>
+    
+    <!-- Google Fonts for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables for Easy Theme Tweaking --- */
+        :root {
+            --bg-color: #0f172a; /* Dark blue/slate */
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8; /* Light blue accent */
+            --accent-hover: #0284c7;
+        }
+
+        /* --- Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- Project Grid --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Project Cards --- */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; /* Starts hidden for animation */
+        }
+
+        /* Stagger the animation for each card */
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .card-tag {
+            display: inline-block;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background-color: var(--accent);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .card-link:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.8s;
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- UPDATE HERE: Your Name or Brand -->
+        <h1>My Developer Portfolio</h1>
+        <!-- UPDATE HERE: A brief summary of what you do -->
+        <p>A collection of my recent projects focusing on data analysis, dashboard creation, and automated workflows.</p>
+    </header>
+
+    <main class="grid-container">
+
+        <!-- ==========================================
+             PROJECT CARD 1
+             ========================================== -->
+        <article class="card">
+            <!-- UPDATE HERE: Technology tag (e.g., Power BI, Python, HTML) -->
+            <span class="card-tag">Power BI</span>
+            
+            <!-- UPDATE HERE: Project Title -->
+            <h2>Prompt Vault</h2>
+            
+            <!-- UPDATE HERE: Project Description -->
+            <p>General prompts for Organisations</p>
+            
+            <!-- UPDATE HERE: Replace the href="#" with your actual GitHub link -->
+            <a href="https://pratiknanda.github.io/prompt-vault/" target="_blank" class="card-link">View Project &rarr;</a>
+        </article>
+
+        <!-- ==========================================
+             PROJECT CARD 2
+             ========================================== -->
+        <article class="card">
+            <span class="card-tag">Python</span>
+            <h2>Mind Reader Appt</h2>
+            <p>Fun Mind Reader App.</p>
+            
+            <!-- UPDATE HERE: GitHub Link -->
+            <a href="https://mind-reader-app-pratiknanda.onrender.com/" target="_blank" class="card-link">View Project &rarr;</a>
+        </article>
+
+        <!-- ==========================================
+             PROJECT CARD 3
+             ========================================== -->
+        <article class="card">
+            <span class="card-tag">SQL & Excel</span>
+            <h2>Client Data Validation</h2>
+            <p>A data validation pipeline designed to audit large datasets, ensuring accuracy and data integrity before migrating to a new platform.</p>
+            
+            <!-- UPDATE HERE: GitHub Link -->
+            <a href="#" target="_blank" class="card-link">View Project &rarr;</a>
+        </article>
+        
+        <!-- NOTE: To add more projects, just copy and paste one of the <article class="card"> blocks above! -->
+
+    </main>
+
+    <footer>
+        <!-- UPDATE HERE: Update the year and your name -->
+        <p>&copy; 2026 Your Name. Built with HTML & CSS.</p>
+    </footer>
+
+</body>
+</html>
