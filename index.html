@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- UPDATE HERE: Change the title of your page -->
     <title>My Portfolio | Projects</title>
     
-    <!-- Google Fonts for a modern look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CSS Variables for Easy Theme Tweaking --- */
         :root {
-            --bg-color: #0f172a; /* Dark blue/slate */
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8; /* Light blue accent */
-            --accent-hover: #0284c7;
+            --bg-color: #fdfdfd;
+            --text-main: #111827;
+            --text-muted: #4b5563;
+            --primary-green: #145336;
+            --primary-green-hover: #0e3d27;
+            --light-green: #e6f4ea;
+            --border-color: #e5e7eb;
+            --card-bg: #ffffff;
         }
 
-        /* --- Base Styles --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -32,187 +31,441 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 2rem;
+            /* Subtle dot pattern background matching the screenshot */
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
 
-        /* --- Animations --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Header Section --- */
-        header {
-            text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
+        .container {
+            max-width: 1280px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        /* --- Project Grid --- */
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
+            background-color: var(--primary-green);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            background: transparent;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--light-green);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6rem 0;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .cursor {
+            color: var(--primary-green);
+            font-weight: 300;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-solid {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-solid:hover {
+            background-color: var(--primary-green-hover);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-circle {
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .social-circle:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* --- Dashboard Graphic (CSS Representation) --- */
+        .hero-graphic {
+            flex: 1;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .graphic-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box {
+            background: var(--light-green);
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 48%;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 120px;
+            margin-top: 2rem;
+        }
+
+        .bar {
+            flex: 1;
+            background-color: var(--primary-green);
+            border-radius: 4px 4px 0 0;
+        }
+        .bar.light { background-color: #52b788; }
+
+        /* --- Projects Grid --- */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-bottom: 5rem;
         }
 
-        /* --- Project Cards --- */
         .card {
             background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 2rem;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0; /* Starts hidden for animation */
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
-        /* Stagger the animation for each card */
-        .card:nth-child(1) { animation-delay: 0.2s; }
-        .card:nth-child(2) { animation-delay: 0.4s; }
-        .card:nth-child(3) { animation-delay: 0.6s; }
-
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--primary-green);
         }
 
         .card-tag {
             display: inline-block;
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
+            background-color: var(--light-green);
+            color: var(--primary-green);
             font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            margin-bottom: 1rem;
+            font-weight: 700;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
         }
 
         .card p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .card-link {
-            display: inline-block;
+            color: var(--primary-green);
             text-decoration: none;
-            color: #fff;
-            background-color: var(--accent);
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.2s;
         }
 
         .card-link:hover {
-            background-color: var(--accent-hover);
+            gap: 0.8rem;
         }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            margin-top: 5rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            animation: fadeInUp 1s ease-out forwards;
-            animation-delay: 0.8s;
-            opacity: 0;
+        @media (max-width: 968px) {
+            .hero { flex-direction: column; text-align: center; padding: 4rem 0; }
+            .hero-content { margin: 0 auto; }
+            .hero-actions { justify-content: center; flex-wrap: wrap; }
+            .social-links { justify-content: center; width: 100%; margin-top: 1rem; }
+            .nav-links { display: none; }
         }
-
     </style>
 </head>
 <body>
 
-    <header>
-        <!-- UPDATE HERE: Your Name or Brand -->
-        <h1>My Developer Portfolio</h1>
-        <!-- UPDATE HERE: A brief summary of what you do -->
-        <p>A collection of my recent projects focusing on data analysis, dashboard creation, and automated workflows.</p>
-    </header>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <!-- UPDATE HERE: Initials -->
+            <div class="logo">PN</div>
+            <div class="nav-links">
+                <a href="#">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#">Certifications</a>
+                <a href="#">Contact</a>
+            </div>
+            <!-- UPDATE HERE: Link to your resume -->
+            <a href="#" class="btn-outline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Download CV
+            </a>
+        </nav>
 
-    <main class="grid-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    ✦ Open to Opportunities
+                </div>
+                
+                <!-- UPDATE HERE: Name and Title -->
+                <h1>Pratik Nanda</h1>
+                <h2>I'm a Data Analyst<span class="cursor">|</span></h2>
+                
+                <p>Transforming operational data into intelligence — one automated workflow at a time. Specializing in the intersection of business intelligence, ITSM operations, and data engineering.</p>
+                
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-solid">
+                        View My Work &rarr;
+                    </a>
+                    <a href="#" class="btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        Download CV
+                    </a>
+                </div>
 
-        <!-- ==========================================
-             PROJECT CARD 1
-             ========================================== -->
-        <article class="card">
-            <!-- UPDATE HERE: Technology tag (e.g., Power BI, Python, HTML) -->
-            <span class="card-tag">Power BI</span>
-            
-            <!-- UPDATE HERE: Project Title -->
-            <h2>Prompt Vault</h2>
-            
-            <!-- UPDATE HERE: Project Description -->
-            <p>General prompts for Organisations</p>
-            
-            <!-- UPDATE HERE: Replace the href="#" with your actual GitHub link -->
-            <a href="https://pratiknanda.github.io/prompt-vault/" target="_blank" class="card-link">View Project &rarr;</a>
-        </article>
+                <div class="social-links">
+                    <!-- UPDATE HERE: Social Links -->
+                    <a href="#" class="social-circle" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    </a>
+                    <a href="#" class="social-circle" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="#" class="social-circle" aria-label="Email">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </a>
+                </div>
+            </div>
 
-        <!-- ==========================================
-             PROJECT CARD 2
-             ========================================== -->
-        <article class="card">
-            <span class="card-tag">Python</span>
-            <h2>Mind Reader Appt</h2>
-            <p>Fun Mind Reader App.</p>
-            
-            <!-- UPDATE HERE: GitHub Link -->
-            <a href="https://mind-reader-app-pratiknanda.onrender.com/" target="_blank" class="card-link">View Project &rarr;</a>
-        </article>
+            <!-- CSS Representation of Dashboard Graphic -->
+            <div class="hero-graphic">
+                <div class="graphic-header">
+                    <div>
+                        <h3 style="font-size: 1.2rem;">Performance Overview</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Real-time analytics</p>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="stat-box">
+                        <p style="font-size: 0.75rem; font-weight: 600; color: var(--primary-green); text-transform: uppercase;">Total Records</p>
+                        <div class="stat-value">3,927</div>
+                    </div>
+                    <div style="width: 45%; border-radius: 50%; border: 12px solid var(--border-color); border-top-color: var(--primary-green); display: flex; align-items: center; justify-content: center;">
+                        <span style="font-weight: 700; font-size: 1.5rem;">82%</span>
+                    </div>
+                </div>
+                <div class="bars">
+                    <div class="bar light" style="height: 30%"></div>
+                    <div class="bar" style="height: 50%"></div>
+                    <div class="bar" style="height: 80%"></div>
+                    <div class="bar light" style="height: 60%"></div>
+                    <div class="bar" style="height: 70%"></div>
+                    <div class="bar light" style="height: 65%"></div>
+                    <div class="bar" style="height: 100%"></div>
+                </div>
+            </div>
+        </section>
 
-        <!-- ==========================================
-             PROJECT CARD 3
-             ========================================== -->
-        <article class="card">
-            <span class="card-tag">SQL & Excel</span>
-            <h2>Client Data Validation</h2>
-            <p>A data validation pipeline designed to audit large datasets, ensuring accuracy and data integrity before migrating to a new platform.</p>
-            
-            <!-- UPDATE HERE: GitHub Link -->
-            <a href="#" target="_blank" class="card-link">View Project &rarr;</a>
-        </article>
-        
-        <!-- NOTE: To add more projects, just copy and paste one of the <article class="card"> blocks above! -->
+        <!-- Project Links Section -->
+        <h2 id="projects" class="section-title">Featured Projects</h2>
+        <main class="grid-container">
 
-    </main>
+            <!-- Card 1 -->
+            <article class="card">
+    <span class="card-tag">Prompt Library</span>
+    <h3>Prompt Vault</h3>
+    <p>A curated collection of reusable AI prompts designed to improve productivity and collaboration across organizations.</p>
+    <a href="https://pratiknanda.github.io/prompt-vault" target="_blank" class="card-link">View Repository &rarr;</a>
+</article>
 
-    <footer>
-        <!-- UPDATE HERE: Update the year and your name -->
-        <p>&copy; 2026 Your Name. Built with HTML & CSS.</p>
-    </footer>
+<article class="card">
+    <span class="card-tag">JavaScript Game</span>
+    <h3>Memory Match Game</h3>
+    <p>A simple card-matching game that challenges players to find matching pairs using memory and logic.</p>
+    <a href="https://pratiknanda.github.io/memory-game" target="_blank" class="card-link">View Repository &rarr;</a>
+</article>
 
+<article class="card">
+    <span class="card-tag">Fun Project</span>
+    <h3>Trick Lab</h3>
+    <p>A collection of entertaining web-based tricks and playful illusions designed to surprise and amuse users.</p>
+    <a href="https://pratiknanda.github.io/Tricksters-Lab/" target="_blank" class="card-link">View Repository &rarr;</a>
+</article>
+
+<article class="card">
+    <span class="card-tag">Automation</span>
+    <h3>Automated Reply Regulation Policy</h3>
+    <p>A tool for automating responses while ensuring they follow predefined regulatory and organizational policies.</p>
+    <a href="https://pratiknanda.github.io/n8n-rag-demo" target="_blank" class="card-link">View Repository &rarr;</a>
+</article>
+
+<article class="card">
+    <span class="card-tag">Browser Utility</span>
+    <h3>Browser Notepad</h3>
+    <p>A lightweight in-browser notepad for quickly writing, editing, and saving notes without installation.</p>
+    <a href="https://pratiknanda.github.io/browser-notepad" target="_blank" class="card-link">View Repository &rarr;</a>
+</article>
+
+
+        </main>
+    </div>
 </body>
 </html>
