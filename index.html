@@ -30,16 +30,38 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 4rem 0;
+            padding-top: 2rem;
             /* Subtle dot pattern background */
             background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
             background-size: 24px 24px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 2rem;
+            width: 100%;
+            flex: 1; /* Pushes the footer/watermark to the bottom */
+        }
+
+        /* --- Top Navigation / Back Link --- */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
         }
 
         /* --- Projects Grid --- */
@@ -53,6 +75,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .card {
@@ -96,7 +119,7 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 2rem;
-            flex-grow: 1; /* Pushes the link to the bottom if text lengths vary */
+            flex-grow: 1;
         }
 
         .card-link {
@@ -112,11 +135,30 @@
         .card-link:hover {
             gap: 0.8rem;
         }
+
+        /* --- Watermark --- */
+        .watermark {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            opacity: 0.4; /* Makes it look faded like a watermark */
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            user-select: none; /* Prevents text highlighting to feel more like a watermark */
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- Back to Portfolio Link -->
+        <a href="https://pratiknanda.github.io/" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Go back to portfolio
+        </a>
+
         <h2 id="projects" class="section-title">Featured Projects</h2>
         
         <main class="grid-container">
@@ -161,6 +203,11 @@
             </article>
         </main>
     </div>
+
+    <!-- Watermark Footer -->
+    <footer class="watermark">
+        Pratik Nanda
+    </footer>
 
 </body>
 </html>
